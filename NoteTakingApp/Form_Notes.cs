@@ -16,10 +16,11 @@ namespace NoteTakingApp
             notes.Columns.Add("Title");
             notes.Columns.Add("Note");
 
+            //previousNotes = name of DataGridView
             previousNotes.DataSource = notes;
-
         }
 
+        //Load selected title and note from DataGridView
         private void loadButton_Click(object sender, EventArgs e)
         {
             titleBox.Text = notes.Rows[previousNotes.CurrentCell.RowIndex].ItemArray[0].ToString();
@@ -37,6 +38,7 @@ namespace NoteTakingApp
 
         }
 
+        //Save current Title and Note into Data Table
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (editing)
@@ -54,22 +56,30 @@ namespace NoteTakingApp
 
         }
 
+        //Function for new note. Makes Title and Note blank
         private void newNoteButton_Click(object sender, EventArgs e)
         {
             titleBox.Text = "";
             noteBox.Text = "";
         }
 
-        private void noteBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Same code as load function, but for double click
         private void previousNotes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             titleBox.Text = notes.Rows[previousNotes.CurrentCell.RowIndex].ItemArray[0].ToString();
             noteBox.Text = notes.Rows[previousNotes.CurrentCell.RowIndex].ItemArray[1].ToString();
             editing = true;
+        }
+
+        //Program has errors without 2 functions below
+        private void noteBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
